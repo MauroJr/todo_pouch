@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>PouchDB demo</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <script src="scripts/pouchdb-2.1.0.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+
+    <script src="scripts/app.js"></script>
+</head>
+
+<body ng-app="testApp" ng-controller="TodoCtrl" class="container">
+
+    <section class="row">
+        <h2>Todo list</h2>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Text</th>
+                <th>Remove</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="todo in todos">
+                <td>{{ $index }}</td>
+                <td>{{ todo.text }}</td>
+                <td>
+                    <button class="btn btn-xs btn-danger" ng-click="remove(todo._id)">Remove</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <form ng-submit="submit()" class="row">
+        <div class="col-xs-10 group-input">
+            <input type="text" class="form-control" ng-model="text"/>
+        </div>
+        <div class="col-xs-2">
+            <input type="submit" class="btn btn-primary" value="Save"/>
+        </div>
+    </form>
+
+</body>
+
+</html>
